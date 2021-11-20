@@ -1,3 +1,3 @@
-# my-app
+# Three.js playground 
 
-This project was bootstrapped with [`create-r3f-app`](https://github.com/RenaudROHLINGER/create-r3f-app)# three-playground-next
+- This project was bootstrapped with [`create-r3f-app`](https://github.com/RenaudROHLINGER/create-r3f-app)
