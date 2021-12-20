@@ -47,10 +47,13 @@ const ForwardPropsToR3fComponent = ({ comp, pageProps }) => {
 }
 
 function App({ Component, pageProps = { title: 'index' } }) {
+
   const router = useRouter()
+
   useEffect(() => {
     useStore.setState({ router })
   }, [router])
+
   return (
     <>
       <Header title={pageProps.title} />

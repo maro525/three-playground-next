@@ -15,6 +15,7 @@ const LControl = () => {
   // @ts-ignore
   return <OrbitControls ref={control} domElement={dom.current} />
 }
+
 const LCanvas = ({ children }) => {
   const dom = useStore((state) => state.dom)
 

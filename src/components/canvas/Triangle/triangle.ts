@@ -12,7 +12,7 @@ import {
 } from "three"
 import {hslToRgb} from "@/utils/color"
 
-class Triangle {
+export class Triangle {
 
   h: number;
   w: number;
@@ -40,7 +40,7 @@ class Triangle {
     if (a > 0.2 && Math.random() < Math.random() / 8 + a / 1.5) {
       this.subdivide()
     } else {
-      triangles.push(this)
+      this.triangles.push(this)
     }
   }
 
@@ -111,5 +111,10 @@ class Triangle {
 
   subdivide() {
 
+    for (let i=0; i<this.triangles.length; i++) {
+      if (this.triangles[i] == this) {
+        this.triangles.splice(i, 1)
+      }
+    }
   }
 }
