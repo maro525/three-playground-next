@@ -1,10 +1,12 @@
 import { useRouter } from 'next/router'
-import useStore from '@/helpers/store'
+import useStore from '@/store'
 import { useEffect, Children } from 'react'
 import Header from '@/config'
 import dynamic from 'next/dynamic'
 import Dom from '@/components/layout/dom'
 
+import '@/styles/reset.css'
+import '@/styles/global.css'
 import '@/styles/index.css'
 
 let LCanvas = null

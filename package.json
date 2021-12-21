@@ -1,21 +1,32 @@
 {
   "name": "react-three-next",
   "version": "2.0.0",
-  "authors": [
-    "Renaud ROHLINGER <https://twitter.com/onirenaud>"
-  ],
   "license": "MIT",
   "private": true,
+  "scripts": {
+    "lint": "yarn prettier && yarn eslint",
+    "eslint": "next lint --fix --dir src",
+    "prettier": "prettier --list-different \"./src/**/*.{ts,tsx,md}\"",
+    "dev": "next dev",
+    "build": "next build",
+    "export": "EXPORT=true next build && EXPORT=true next export",
+    "analyze": "ANALYZE=true next build",
+    "start": "next start"
+  },
   "engines": {
     "node": ">=14"
   },
   "dependencies": {
+    "@emotion/react": "^11.7.1",
+    "@emotion/styled": "^11.6.0",
     "@react-three/drei": "^7.19.3",
     "@react-three/fiber": "^7.0.17",
+    "framer-motion": "^5.5.5",
     "glsl-random": "^0.0.5",
     "next": "^12.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-use-measure": "^2.1.1",
     "short-uuid": "^4.2.0",
     "three": "^0.134.0",
     "three-stdlib": "^2.5.4"
@@ -43,15 +54,5 @@
     "typescript": "^4.5.2",
     "url-loader": "^4.1.1",
     "webpack": "^5.61.0"
-  },
-  "scripts": {
-    "lint": "yarn prettier && yarn eslint",
-    "eslint": "next lint --fix --dir src",
-    "prettier": "prettier --list-different \"./src/**/*.{ts,tsx,md}\"",
-    "dev": "next dev",
-    "build": "next build",
-    "export": "EXPORT=true next build && EXPORT=true next export",
-    "analyze": "ANALYZE=true next build",
-    "start": "next start"
   }
 }
