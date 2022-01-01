@@ -1,15 +1,16 @@
-import {
-  ClampToEdgeWrapping,
-  DataTexture,
-  DataUtils,
-  FloatType,
-  HalfFloatType,
-  LinearFilter,
-  NearestFilter,
-  RGBAFormat,
-  UVMapping,
-  UniformsLib,
-} from "./three.module.js";
+const ClampToEdgeWrapping = 1001;
+const FloatType = 1015;
+const HalfFloatType = 1016;
+
+const LinearFilter = 1006;
+const NeaarestFilter = 1003;
+const RGBAFormat = 1023;
+const UVMapping = 300;
+
+
+import { DataTexture, UniformsLib } from "three"
+
+import { toHalfFloat } from "@/utils/data"
 
 /**
  * Uniforms library for RectAreaLight shared webgl shaders
@@ -4428,13 +4429,13 @@ class RectAreaLightUniformsLib {
     const ltc_half_1 = new Uint16Array(LTC_MAT_1.length);
 
     LTC_MAT_1.forEach(function (x, index) {
-      ltc_half_1[index] = DataUtils.toHalfFloat(x);
+      ltc_half_1[index] = toHalfFloat(x);
     });
 
     const ltc_half_2 = new Uint16Array(LTC_MAT_2.length);
 
     LTC_MAT_2.forEach(function (x, index) {
-      ltc_half_2[index] = DataUtils.toHalfFloat(x);
+      ltc_half_2[index] = toHalfFloat(x);
     });
 
     UniformsLib.LTC_HALF_1 = new DataTexture(

@@ -1,6 +1,6 @@
 import { useFrame , useThree } from "@react-three/fiber"
 
-cosnt Triangle = () => {
+const Triangle = () => {
 
 
 

@@ -15,6 +15,7 @@ const R3F = () => {
 const Page = () => {
   return (
     <>
+      {/* @ts-ignore */}
       <R3F r3f />
     </>
   )

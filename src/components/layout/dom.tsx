@@ -1,4 +1,4 @@
-import useStore from '@/store'
+import useStore from '@/store/router'
 import { useEffect, useRef } from 'react'
 
 const Dom = ({ children }) => {
