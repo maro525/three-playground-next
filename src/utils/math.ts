@@ -108,7 +108,7 @@ export const MathUtils = Object.freeze({
   smoothstep: smoothstep,
   smootherstep: smootherstep,
   randInt: randInt,
-  randFloat randFloat,
+  randFloat: randFloat,
   randFloatSpread: randFloatSpread,
   degToRad: degToRad,
   radToDeg: radToDeg,

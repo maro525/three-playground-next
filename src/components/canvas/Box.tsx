@@ -1,4 +1,4 @@
-import useStore from '@/store'
+import useStore from '@/store/router'
 import { useFrame } from '@react-three/fiber'
 import { useRef, useState } from 'react'
 

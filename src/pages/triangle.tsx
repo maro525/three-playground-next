@@ -1,8 +1,16 @@
 import dynamic from 'next/dynamic'
 
-const Triangle = dynamic(() => import('@/components/canvas/Triangle/index'), {
+const Triangle = dynamic(() => import('@/components/canvas/Triangle/'), {
   ssr: false,
 })
+
+const DOM = () => {
+  return (
+    <>
+    </>
+  )
+}
+
 
 const R3F = () => {
   return (
@@ -15,6 +23,7 @@ const R3F = () => {
 const Page = () => {
   return (
     <>
+      <DOM />
       {/* @ts-ignore */}
       <R3F r3f />
     </>
