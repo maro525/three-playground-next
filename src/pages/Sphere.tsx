@@ -1,19 +1,20 @@
 import dynamic from 'next/dynamic'
 
-const Box = dynamic(() => import('@/components/canvas/Box'), {
+const Sphere = dynamic(() => import('@/components/canvas/Sphere'), {
   ssr: false,
 })
 
 const DOM = () => {
   return (
-    <></>
+    <>
+    </>
   )
 }
 
 const R3F = () => {
   return (
     <>
-      <Box route='/' />
+      <Sphere />
     </>
   )
 }
@@ -33,7 +34,7 @@ export default Page
 export async function getStaticProps() {
   return {
     props: {
-      title: 'Box',
+      title: 'Sphere',
     },
   }
 }

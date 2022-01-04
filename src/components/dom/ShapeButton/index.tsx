@@ -1,8 +1,9 @@
-import { Suspense, useState } from 'react'
-import { motion, MotionConfig, useMotionValue } from 'framer-motion'
+import { useState } from 'react'
+
 import useMeasure from 'react-use-measure'
 import styled from '@emotion/styled'
-import {Shapes} from "./shapes"
+import { Shapes } from './shapes'
+import { motion, useMotionValue, MotionConfig } from 'framer-motion'
 
 export const transition = {
   type: 'spring',
@@ -40,7 +41,7 @@ export default function ShapeButton() {
             setIsHover(true)
           }}
           onHoverEnd={() => {
-            resetMousePosition();
+            resetMousePosition()
             setIsHover(false)
           }}
           onTapStart={() => setIsPress(true)}
@@ -61,14 +62,12 @@ export default function ShapeButton() {
             <div className='pink blush' />
             <div className='blue blush' />
             <div className='container'>
-              <Suspense fallback={null}>
-                <Shapes
-                  isHover={isHover}
-                  isPress={isPress}
-                  mouseX={mouseX}
-                  mouseY={mouseY}
-                />
-              </Suspense>
+              <Shapes
+                isHover={isHover}
+                isPress={isPress}
+                mouseX={mouseX}
+                mouseY={mouseY}
+              />
             </div>
           </motion.div>
           <motion.div

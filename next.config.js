@@ -6,6 +6,9 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 const withOffline = require('next-offline')
 
 const nextConfig = {
+  // write next config here
+  swcMinify: false,
+  // webpack
   webpack(config, { webpack, dev, isServer }) {
 
     // audio support

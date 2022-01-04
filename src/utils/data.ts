@@ -1,9 +1,9 @@
 // Converts float32 to float16 (stored as uint16 value).
 //
-const _floatView = new Float32Array(1);
+const _floatView = new Float32Array(1)
 const _int32View = new Int32Array(_floatView.buffer)
 
-export const toHalfFloat = (val) => {
+export const toHalfFloat = (val: number) => {
   if (val > 65504) {
     console.warn('THREE.DataUtils.toHalfFloat(): value exceeds 65504.')
 
