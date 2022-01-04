@@ -1,4 +1,3 @@
-import dynamic from 'next/dynamic'
 import ShapeButton from "@/components/dom/ShapeButton"
 
 const DOM = () => {

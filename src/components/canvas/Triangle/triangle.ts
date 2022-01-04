@@ -1,19 +1,6 @@
-import {
-  Vector3,
-  BufferGeometry,
-  BufferAttribute,
-  Mesh,
-  MeshBasicMaterial,
-  DoubleSide,
-  Color,
-  Shape,
-  ExtrudeGeometry,
-  MeshPhysicalMaterial,
-  Scene,
-} from 'three'
-import { MathUtils as math }from "@/utils/math"
-import { hslToRgb } from '@/utils/color'
-import { toMesh, mutateColor } from "./util"
+import { Vector3, BufferGeometry, Scene, Mesh } from 'three'
+import { MathUtils as math } from '@/utils/math'
+import { toMesh, mutateColor } from './util'
 
 export class Triangle {
   h: number
@@ -25,7 +12,14 @@ export class Triangle {
   triangles: Triangle[]
   scene: Scene
 
-  constructor(x: number, y: number, z: number, h: number, color: {h: number, s: number, l: number}, scene: Scene) {
+  constructor(
+    x: number,
+    y: number,
+    z: number,
+    h: number,
+    color: { h: number; s: number; l: number },
+    scene: Scene
+  ) {
     this.h = h
     const w = (2 * this.h) / Math.sqrt(3)
     this.w = w
@@ -40,20 +34,16 @@ export class Triangle {
   }
 
   setup() {
-
     const a = Math.abs(this.w * 2) + Math.abs(this.h * 2)
 
     if (a > 0.2 && Math.random() < Math.random() / 8 + a / 1.5) {
-      console.log("subdivide")
       this.subdivide()
     } else {
-      console.log("add triangle")
       this.triangles.push(this)
     }
   }
 
   init() {
-    console.log("init", this.triangles.length)
     for (const triangle of this.triangles) {
       const mesh = toMesh(this.w, this.h, this.color, this.center)
       this.mesh = mesh
@@ -84,32 +74,52 @@ export class Triangle {
   }
 
   subdivide() {
-    const x0 = -this.w / 2;
-    const x1 = 0;
-    const x2 = this.w / 2;
-    const y0 = this.h / 2;
+    const x0 = -this.w / 2
+    const x1 = 0
+    const x2 = this.w / 2
+    const y0 = this.h / 2
 
-    const x = this.center.x;
-    const y = this.center.y;
-    const z = this.center.z;
+    const x = this.center.x
+    const y = this.center.y
+    const z = this.center.z
 
-    const a = Math.abs(this.w) + Math.abs(this.h);
-    const nh = this.h / 2;
+    const a = Math.abs(this.w) + Math.abs(this.h)
+    const nh = this.h / 2
 
     const t1 = new Triangle(
-      x + x0, y - y0, z + math.r(), nh, mutateColor(this.color, a), this.scene
+      x + x0,
+      y - y0,
+      z + math.r(),
+      nh,
+      mutateColor(this.color, a),
+      this.scene
     )
 
     const t2 = new Triangle(
-      x + x1, y + y0, z + math.r(), nh, mutateColor(this.color, a), this.scene
+      x + x1,
+      y + y0,
+      z + math.r(),
+      nh,
+      mutateColor(this.color, a),
+      this.scene
     )
 
     const t3 = new Triangle(
-      x + x2, y - y0, z + math.r(), nh, mutateColor(this.color, a), this.scene
+      x + x2,
+      y - y0,
+      z + math.r(),
+      nh,
+      mutateColor(this.color, a),
+      this.scene
     )
 
     const t4 = new Triangle(
-      x + x1, y - y0, z + math.r(), -nh, mutateColor(this.color, a), this.scene
+      x + x1,
+      y - y0,
+      z + math.r(),
+      -nh,
+      mutateColor(this.color, a),
+      this.scene
     )
 
     for (let i = 0; i < this.triangles.length; i++) {
