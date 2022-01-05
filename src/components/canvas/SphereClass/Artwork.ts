@@ -122,6 +122,8 @@ export default class Artwork {
     this.gui.add(this.guiParams, 'isBlur')
 
     this.loop()
+
+    window.addEventListener('resize', this.resize.bind(this))
   }
 
   resize() {

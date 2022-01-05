@@ -29,6 +29,7 @@ class CanvasBase {
   }
 
   init($wrapper: HTMLDivElement, bgColor: string) {
+    this.$wrapper = $wrapper
     this.pixelRatio = Math.min(2, window.devicePixelRatio)
 
     this.renderer = new WebGLRenderer({
@@ -49,8 +50,8 @@ class CanvasBase {
   }
 
   resize() {
-    const width = document.body.clientWidth
-    const height = window.innerHeight
+    const width = this.$wrapper.clientWidth
+    const height = this.$wrapper.clientHeight
 
     this.dimensions_old.copy(this.dimensions)
     this.dimensions.set(width, height)
