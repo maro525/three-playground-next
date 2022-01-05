@@ -6,7 +6,6 @@
   * {
     box-sizing: border-box;
   }
-  
   html,
   body,
   #__next {
@@ -16,4 +15,12 @@
     padding: 0;
     overflow: hidden;
   }
+}
+
+/** dat.gui **/
+.dg {
+  position: absolute;
+  overflow: 100;
+  top: 0;
+  right: -15px;
 }

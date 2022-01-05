@@ -83,7 +83,7 @@ const radToDeg = (radians: number): number => {
   return radians * RAD2DEG
 }
 
-const isPowerOfTwo = (value: nunmber): boolean => {
+const isPowerOfTwo = (value: number): boolean => {
   return (value & (value - 1)) === 0 && value !== 0
 }
 
