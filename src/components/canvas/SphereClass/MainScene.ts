@@ -9,6 +9,7 @@ import {
   WebGLRenderTarget,
 } from 'three'
 import { OrbitControls } from 'three-stdlib'
+import anime from 'animejs'
 
 import CanvasBase from '@/components/canvas/base'
 import sphere_vert from './glsl/sphere.vert'
@@ -21,6 +22,7 @@ export default class MainScene {
   camera: PerspectiveCamera
   fbo: WebGLRenderTarget
   controls: OrbitControls
+  material: ShaderMaterial
 
   constructor(bgColor: string) {
     this.bgColor = new Color(bgColor)
@@ -54,12 +56,12 @@ export default class MainScene {
 
     const geometry = new SphereGeometry(10, 32, 32)
 
-    for (let i = 0; i < 300; i++) {
+    for (let i = 0; i < 1000; i++) {
       let color = new Color().copy(colors[0])
       color.lerp(colors[1], Math.random())
       color.lerp(colors[2], Math.random())
 
-      const material = new ShaderMaterial({
+      this.material = new ShaderMaterial({
         vertexShader: sphere_vert,
         fragmentShader: sphere_frag,
         uniforms: {
@@ -82,16 +84,16 @@ export default class MainScene {
             value: this.camera.position,
           },
           uFocus: {
-            value: 20,
+            value: 10,
           },
           uFocusRange: {
-            value: 200,
-          },
-          uFogNear: {
             value: 100,
           },
+          uFogNear: {
+            value: 25,
+          },
           uFogFar: {
-            value: 300,
+            value: 500,
           },
           uBgColor: {
             value: this.bgColor,
@@ -99,18 +101,37 @@ export default class MainScene {
         },
       })
 
-      const mesh = new Mesh(geometry, material)
+      const mesh = new Mesh(geometry, this.material)
       mesh.position.set(
-        (Math.random() - 0.5) * 700,
+        (Math.random() - 0.5) * 300,
+        (Math.random() - 0.5) * 300,
         (Math.random() - 0.5) * 500,
-        (Math.random() - 0.5) * 400
       )
 
-      const scale = Math.random() * 0.8 + 0.2
+      const scale = Math.random() * 0.8 + 0.01
 
       mesh.scale.set(scale, scale, scale)
       this.scene.add(mesh)
     }
+
+    anime({
+      targets: [this.camera.position],
+      x: [-30, 30],
+      z: [30, -30],
+      duration: 10000,
+      direction: 'alternate',
+      loop: true,
+      easing: 'easeInOutSine',
+    })
+
+    anime({
+      targets: [this.camera.rotation],
+      y: [0, Math.PI * 2],
+      duration: 60000,
+      loop: true,
+      easing: 'easeInOutSine',
+    })
+
   }
 
   resize() {
@@ -124,4 +145,9 @@ export default class MainScene {
     CanvasBase.renderer.setRenderTarget(this.fbo)
     CanvasBase.renderer.render(this.scene, this.camera)
   }
+
+  setFocus(v) { this.material.uniforms.uFocus.value = v }
+  setFocusRange(v) { this.material.uniforms.uFocus.value = v }
+  setFogNear(v) { this.material.uniforms.uFogNear.value = v }
+  setFogFar(v) { this.material.uniforms.uFogFar.value = v }
 }

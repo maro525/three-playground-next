@@ -1,6 +1,7 @@
 import {
   Camera,
   Mesh,
+  PerspectiveCamera,
   PlaneBufferGeometry,
   Scene,
   ShaderMaterial,
@@ -111,8 +112,12 @@ export default class Artwork {
     document.body.appendChild(this.stats.dom)
 
     this.guiParams = {
-      blur_iteration: 1,
+      blur_iteration: 8,
       isBlur: true,
+      focus: 10,
+      focus_range: 100,
+      fog_near: 25,
+      fog_far: 500,
     }
 
     this.gui = new GUI()
@@ -120,6 +125,19 @@ export default class Artwork {
 
     this.gui.add(this.guiParams, 'blur_iteration', 1, 8, 1)
     this.gui.add(this.guiParams, 'isBlur')
+    this.gui.add(this.guiParams, 'focus', 1, 50, 1).onChange((v) => {
+      this.mainScene.setFocus(v)
+    })
+
+    this.gui.add(this.guiParams, 'focus_range', 5, 500, 5).onChange((v) => {
+      this.mainScene.setFocusRange(v)
+    })
+    this.gui.add(this.guiParams, 'fog_near', 5, 100, 5).onChange((v) => {
+      this.mainScene.setFogNear(v)
+    })
+    this.gui.add(this.guiParams, 'fog_far', 100, 1000, 10).onChange((v) => {
+      this.mainScene.setFogFar(v)
+    })
 
     this.loop()
 
