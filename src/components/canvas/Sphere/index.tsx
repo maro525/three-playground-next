@@ -1,3 +1,4 @@
+import { MeshDistortMaterial, useCubeTexture, useTexture } from '@react-three/drei'
 import {
   Bloom,
   DepthOfField,
@@ -5,12 +6,38 @@ import {
   Noise,
   Vignette,
 } from '@react-three/postprocessing'
+import {useState} from 'react'
 import { Color } from 'three'
+import { Instances } from "./Sphere"
 
 const Sphere: React.FC = () => {
+  const bumpMap = useTexture('/img/bump.jpg')
+  const envMap = useCubeTexture(
+    ['px.png', 'nx.png', 'py.png', 'ny.png', 'pz.png', 'nz.png'],
+    { path: '/img/cube/' }
+  )
+  const [material, set] = useState();
+
   return (
     <>
-      <div>hello</div>
+      <mesh>
+      <boxBufferGeometry attach="geometry" />
+      <MeshDistortMaterial
+        ref={set}
+        envMap={envMap}
+        bumpMap={bumpMap}
+        color={"#010101"}
+        roughness={0.1}
+        metalness={1}
+        bumpScale={0.005}
+        clearcoat={1}
+        clearcoatRoughness={1}
+        radius={1}
+        distort={0.4}
+        attach="material"
+      />
+      </mesh>
+      {material && <Instances material={material} />}
     </>
   )
 }
@@ -41,4 +68,4 @@ const SphereView: React.FC = () => {
   )
 }
 
-export { SphereView }
+export default SphereView

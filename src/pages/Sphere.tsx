@@ -1,6 +1,6 @@
 import dynamic from 'next/dynamic'
 
-const Sphere = dynamic(() => import('@/components/canvas/Sphere'), {
+const Sphere = dynamic(() => import('@/components/canvas/Sphere/'), {
   ssr: false,
 })
 
