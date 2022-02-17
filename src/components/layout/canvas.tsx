@@ -8,6 +8,8 @@ const LControl = () => {
   const control = useRef(null)
 
   useEffect(() => {
+    console.log(dom)
+    console.log(control.current)
     if (control) {
       dom.current.style['touch-action'] = 'none'
     }
