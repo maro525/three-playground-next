@@ -1,13 +1,13 @@
-import {Camera, Scene} from "three";
+import {Camera, PerspectiveCamera, Scene} from "three";
 
 class Common {
 
-  camera: Camera
+  camera: PerspectiveCamera
   scene: Scene
 
   constructor() {}
 
-  setCamera(ref: Camera){
+  setCamera(ref: PerspectiveCamera){
     this.camera = ref
   }
   getCamera() {

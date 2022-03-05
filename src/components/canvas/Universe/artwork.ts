@@ -1,4 +1,4 @@
-import { ShaderMaterial, PlaneBufferGeometry, Mesh, Camara, Vector2, Raycaster, MeshBasicMaterial, Color } from 'three'
+import { ShaderMaterial, PlaneBufferGeometry, Mesh, Camara, Vector2, Raycaster, MeshBasicMaterial, Color, Camera } from 'three'
 import vertex from './glsl/shader.vert'
 import fragment from './glsl/shader.frag'
 import Common from "@/components/canvas/common"

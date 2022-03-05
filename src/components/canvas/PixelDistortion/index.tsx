@@ -1,10 +1,9 @@
 import { useFrame, useThree } from '@react-three/fiber'
 import { useEffect, useRef } from 'react'
 import Common from "../common"
-import Artwork from './artwork'
+import Artwork from './Artwork'
 
-
-const TriangleView = () => {
+const PixelDistortion = () => {
 
   const { scene, camera } = useThree()
 
@@ -17,9 +16,6 @@ const TriangleView = () => {
 
     Common.setCamera(camera)
     Common.setScene(scene)
-
-    camera.position.set(0, 0, 1.2)
-    camera.lookAt(scene.position)
 
     const artwork = new Artwork()
     artworkRef.current = artwork
@@ -37,4 +33,4 @@ const TriangleView = () => {
   return null
 }
 
-export default TriangleView
+export default PixelDistortion
