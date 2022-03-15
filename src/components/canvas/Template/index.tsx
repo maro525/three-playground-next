@@ -1,10 +1,9 @@
 import { useFrame, useThree } from '@react-three/fiber'
 import { useEffect, useRef } from 'react'
 import Common from "../common"
-import Artwork from './artwork'
+import Artwork from './Artwork'
 
-
-const TriangleView = () => {
+const PixelDistortion = () => {
 
   const { scene, camera } = useThree()
 
@@ -37,4 +36,4 @@ const TriangleView = () => {
   return null
 }
 
-export default TriangleView
+export default PixelDistortion
