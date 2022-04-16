@@ -1,9 +1,9 @@
 import {getViewSizeAtDepth} from "@/utils/3d"
-import {PerspectiveCamera, PlaneGeometry} from "three"
+import {PerspectiveCamera, PlaneBufferGeometry} from "three"
 
 export default function createFilledPlane(camera: PerspectiveCamera) {
   const viewSize = getViewSizeAtDepth(camera)
-  const geometry = new PlaneGeometry(viewSize.width, viewSize.height, 1, 1)
+  const geometry = new PlaneBufferGeometry(viewSize.width, viewSize.height, 1, 1)
 
   return geometry
 

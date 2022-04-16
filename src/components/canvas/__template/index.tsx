@@ -1,12 +1,12 @@
 import { useFrame, useThree } from '@react-three/fiber'
 import { useEffect, useRef } from 'react'
-import Common from "../common"
+import {PerspectiveCamera} from 'three'
 import Artwork from './artwork'
 
 
 const ShaderView = () => {
 
-  const { scene, camera } = useThree()
+  const { scene, camera, gl } = useThree()
 
   const artworkRef = useRef<Artwork>(null)
 
@@ -15,13 +15,12 @@ const ShaderView = () => {
 
   const init = () => {
 
-    Common.setCamera(camera as PerspectiveCamera)
-    Common.setScene(scene)
-
     camera.position.set(0, 0, 1.2)
     camera.lookAt(scene.position)
 
-    const artwork = new Artwork()
+    const dom = gl.domElement
+
+    const artwork = new Artwork(camera as PerspectiveCamera, scene, dom)
     artworkRef.current = artwork
 
   }

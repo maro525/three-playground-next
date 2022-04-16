@@ -1,6 +1,6 @@
 import {Color, DataTexture, DoubleSide, FloatType, NearestFilter, RGBFormat, ShaderMaterial, Vector4} from "three";
 
-import createImageTexture from "./CreateImageTexture";
+import createImageTexture from "@/utils/3d/CreateImageTexture";
 import { fragShader, vertShader} from "./shader";
 
 

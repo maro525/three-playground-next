@@ -1,8 +1,8 @@
 import {Mesh, PerspectiveCamera, PlaneGeometry, Scene } from "three"
 
 import MyMaterial from "./MyMaterial"
-import createFilledPlane from "./CreateFilledPlane"
-import getCanvasResolution from "./GetCanvasResolution"
+import createFilledPlane from "@/utils/3d/CreateFilledPlane"
+import getCanvasResolution from "@/utils/3d/GetCanvasResolution"
 
 
 const Settings = {

@@ -1,7 +1,6 @@
 import { useFrame, useThree } from '@react-three/fiber'
 import { useEffect, useRef } from 'react'
 import {PerspectiveCamera} from 'three'
-import Common from "../common"
 import Artwork from './Artwork'
 
 const PixelDistortion = () => {
@@ -14,9 +13,6 @@ const PixelDistortion = () => {
   useFrame(() => update())
 
   const init = () => {
-
-    Common.setCamera(camera as PerspectiveCamera)
-    Common.setScene(scene)
 
     const container = gl.domElement
 
