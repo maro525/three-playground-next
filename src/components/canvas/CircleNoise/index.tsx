@@ -36,7 +36,7 @@ const ShaderView = () => {
 
   return (
     <>
-      <color attach='background' args={['#000011']} />
+      <color attach='background' args={['#fffff']} />
     </>
   )
 }

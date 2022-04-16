@@ -1,4 +1,4 @@
-import { ShaderMaterial, PlaneBufferGeometry, Mesh, Vector2, AdditiveAnimationBlendMode, AdditiveBlending} from 'three'
+import { ShaderMaterial, PlaneBufferGeometry, Mesh, Vector2, AdditiveAnimationBlendMode, AdditiveBlending, NoBlending} from 'three'
 import vertex from './glsl/shader.vert'
 import fragment from './glsl/shader.frag'
 import circle_vertex from './glsl/circle.vert'
@@ -39,8 +39,8 @@ class Artwork {
           value: new Vector2(canvasSize.width, canvasSize.height)
         },
       },
-      transparent: true,
-      blending: AdditiveBlending,
+      // transparent: true,
+      blending: NoBlending,
     })
 
     // ==============================
@@ -66,8 +66,8 @@ class Artwork {
           value: new Vector2(canvasSize.width, canvasSize.height)
         },
       },
-      transparent: true,
-      blending: AdditiveBlending
+      // transparent: true,
+      blending: NoBlending
     })
     // ==============================
     // plane

@@ -24,6 +24,17 @@ mat2 rotate2d(float _angle) {
  return mat2(cos(_angle), -sin(_angle), sin(_angle), cos(_angle));
 }
 
+// YUV to RGB matrix
+mat3 yuv2rgb = mat3(1.0, 0.0, 1.13983,
+                    1.0, -0.39465, -0.58060,
+                    1.0, 2.03211, 0.0);
+
+// RGB to YUV matrix
+mat3 rgb2yuv = mat3(0.2126, 0.7152, 0.0722,
+                    -0.09991, -0.33609, 0.43600,
+                    0.615, -0.5586, -0.05639);
+
+
 float linearstep(float a, float b, float x) {
     if (x < a) return 0.0;
     else if (x > b) return 1.0;
@@ -88,7 +99,8 @@ void main() {
     float w = 0.1;
 
     float s1 = shapeBorder(uv, radius, w, .3, 0.4);
-    color += s1 * sky;
+    vec3 c1 = yuv2rgb * vec3(0.5, uv.x, uv.y);
+    color += s1 * c1;
 
     float s2 = shapeBorder(uv, radius, w, .22, 0.8);
     sky.b += 0.01;
@@ -102,8 +114,8 @@ void main() {
     sky.b += 0.01;
     // color += s4 * sky;
 
-    float opacity = 0.5;
-    if (s1 == 0.0 && s2 == 0.0 && s3 == 0.0) discard;
+    float opacity = 0.0;
+    // if (s1 == 0.0 && s2 == 0.0 && s3 == 0.0) discard;
 
     if (color.r > r) color.r = r;
     if (color.g > g) color.g = g;
